@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -23,8 +24,25 @@ public class ProdutoController {
     private GrupoReposirory grupoReposirory;
 
     @GetMapping("/{grupoId}")
-    public List<Produto> listar(@PathVariable Long grupoId) {
+    public List<ProdutoDto> listar(@PathVariable Long grupoId) {
         Grupo grupo = grupoReposirory.getReferenceById(grupoId);
-        return produtoRepository.findAllByGrupo(grupo);
+        return produtoRepository.findAllByGrupo(grupo).stream().map(ProdutoDto::new).toList();
+    }
+
+}
+
+record ProdutoDto(
+        Long id,
+        String nome,
+        String descricao,
+        BigDecimal valor
+) {
+    ProdutoDto(Produto produto) {
+        this(
+                produto.getId(),
+                produto.getNome(),
+                produto.getDescricao(),
+                produto.getValor()
+        );
     }
 }
