@@ -18,5 +18,7 @@ public class Grupo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String imagem;
 }
