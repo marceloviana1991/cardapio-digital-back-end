@@ -29,6 +29,11 @@ public class ProdutoController {
         return produtoRepository.findAllByGrupo(grupo).stream().map(ProdutoDto::new).toList();
     }
 
+    @GetMapping("detalhamento/{id}")
+    public ProdutoDto detalhamento(@PathVariable Long id) {
+        return new ProdutoDto(produtoRepository.getReferenceById(id));
+    }
+
 }
 
 record ProdutoDto(
