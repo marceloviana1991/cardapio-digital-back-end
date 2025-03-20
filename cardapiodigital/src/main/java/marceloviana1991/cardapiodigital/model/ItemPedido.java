@@ -20,9 +20,12 @@ public class ItemPedido {
     private int quantidade;
     @ManyToOne
     private Produto produto;
+    @ManyToOne
+    private Usuario usuario;
 
-    public ItemPedido(int quantidade, Produto produto) {
+    public ItemPedido(int quantidade, Produto produto, Usuario usuario) {
         this.quantidade = quantidade;
         this.produto = produto;
+        this.usuario = usuario;
     }
 }
