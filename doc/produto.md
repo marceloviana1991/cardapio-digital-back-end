@@ -39,7 +39,9 @@ Response
         "valor": "double",
         "idGrupo": "Long"
     }
+    ...
 ]
-...
+
+```
 
 

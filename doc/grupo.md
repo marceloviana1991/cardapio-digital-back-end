@@ -35,7 +35,7 @@ Response
         "nome": "String",
         "imagem": "String"
     }
+    ...
 ]
-...
-
+```
 
